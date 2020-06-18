@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = FALSE)
   
 ### Where to find the app?
 - The app is located <a href="https://lbrodier87.shinyapps.io/lb_shinyapp/">here</a>
-- The documentation can be found <a href="https://lbrodier87.github.io/DataProductsWeek4LB/Documentation_LB_ShinyApp.html">here </a>. 
+- The documentation can be found <a href="https://lbrodier87.github.io/DataProductsWeek4LB/Documentation_LB_ShinyApp.html">here </a>
 
 ## How to use the App: 
   

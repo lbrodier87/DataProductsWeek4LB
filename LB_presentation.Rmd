@@ -1,0 +1,61 @@
+---
+title: "LB_ShinyAPP"
+author: "Laurent Brodier"
+date: "18/06/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+### Description
+- The app enables to do clustering on multiple datasets.
+- The ouput displays a scatterplot or a dendrogram. 
+<br><br>
+  
+### Where to find the app?
+- The app is located <a href="https://lbrodier87.shinyapps.io/lb_shinyapp/">here</a>
+- The documentation can be found <a href="https://lbrodier87.github.io/DataProductsWeek4LB/Documentation_LB_ShinyApp.html">here </a>. 
+
+## How to use the App: 
+  
+- Select the **dataset**
+- Select the **X Variable**  and **Y Variable**
+- Select the **Clusering method** (k-means or hclust)
+- Select the target **number of clusters**
+  
+  <br>
+*The output is displayed on the right:*
+  
+- A scatter plot for k-means  
+- A dendrogram for hclust
+  
+## k-means
+```{r}
+library(ggplot2)
+df <- iris[,c(1,3)]
+df <- na.omit(df)
+k <-  kmeans(df, 3)
+cluster <- as.factor(k$cluster)
+centers <- as.data.frame(k$centers)
+centers$color= as.factor(1:nrow(centers))
+ggplot(data=df, aes(x=df[,1], y=df[,2])) + 
+                geom_point(aes(color=cluster), alpha=0.5, size=2) + 
+                geom_point(data=centers, inherit.aes = F, aes(x=centers[,1], y=centers[,2], color=color), 
+                           shape=3, size=5) + 
+                theme_bw() + labs(x=names(iris)[1], y=names(iris)[3], title = "k-mean clustering") 
+```
+This is an example of k-means clustering on dataset *iris* with *k-means* and *6 clusters*. 
+
+## hierarchical clustering: 
+```{r}
+df <- mtcars
+            d <- dist(df, method = "euclidean") # distance matrix
+            fit <- hclust(d, method="ward.D2")
+            plot(fit, xlab ="observation") # display dendogram
+            groups <- as.factor(cutree(fit, k=3)) # cut tree into 5 clusters
+            rect.hclust(fit, k=3, border="red")
+```
+This is an example of *hclust* on the dataset *mtcars*. 

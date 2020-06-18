@@ -10,7 +10,7 @@ shinyUI(fluidPage(
     
     # Application title
     titlePanel("Clustering of R datasets"),
-
+    a("click here for documentation", href="https://lbrodier87.github.io/DataProductsWeek4LB/Documentation_LB_ShinyApp.html"),
     # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(

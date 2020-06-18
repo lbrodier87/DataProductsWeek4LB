@@ -47,6 +47,7 @@ ggplot(data=df, aes(x=df[,1], y=df[,2])) +
                            shape=3, size=5) + 
                 theme_bw() + labs(x=names(iris)[1], y=names(iris)[3], title = "k-mean clustering") 
 ```
+  
 This is an example of k-means clustering on dataset *iris* with *k-means* and *6 clusters*. 
 
 ## hierarchical clustering: 
@@ -58,4 +59,5 @@ df <- mtcars
             groups <- as.factor(cutree(fit, k=3)) # cut tree into 5 clusters
             rect.hclust(fit, k=3, border="red")
 ```
-This is an example of *hclust* on the dataset *mtcars*. 
+  
+This is an example of *hclust* on the dataset *mtcars* with *3 clusters*. 
